@@ -1,0 +1,56 @@
+<h2>Gestión de Órdenes</h2>
+
+<!-- Formulario para crear o editar una orden -->
+<form (ngSubmit)="editing ? updateOrden() : createOrden()">
+  <div>
+    <label for="tableId">ID de Mesa:</label>
+    <input type="text" id="tableId" [(ngModel)]="orden.tableId" name="tableId" required>
+  </div>
+  
+  <div>
+    <label for="status">Estado:</label>
+    <select id="status" [(ngModel)]="orden.status" name="status" required>
+      <option value="pendiente">Pendiente</option>
+      <option value="en_proceso">En proceso</option>
+      <option value="listo">Listo</option>
+    </select>
+  </div>
+  
+  <div>
+    <label for="platillos">Platillos:</label>
+    <select [(ngModel)]="selectedPlatillo" name="platillos">
+      <option *ngFor="let platillo of platillos" [ngValue]="platillo">{{ platillo.name }}</option>
+    </select>
+    <button type="button" (click)="addPlatillo()">Agregar Platillo</button>
+  </div>
+
+  <div>
+    <h4>Platillos en la Orden:</h4>
+    <ul>
+      <li *ngFor="let platillo of orden.dishes; let i = index">
+        {{ platillo.name }} (Cantidad: {{ platillo.quantity }})
+        <button type="button" (click)="removePlatillo(i)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+
+  <button type="submit">{{ editing ? 'Actualizar Orden' : 'Crear Orden' }}</button>
+</form>
+
+
+<button [routerLink]="'/categorias'" class="next-btn">Siguiente</button>
+<!-- Lista de Órdenes -->
+<!-- Lista de Órdenes -->
+<h3>Lista de Órdenes</h3>
+<ul>
+  <li *ngFor="let orden of ordenes">
+    <span>Mesa: {{ orden.tableId }} - Estado: {{ orden.status }}</span>
+    <ul>
+      <li *ngFor="let dish of orden.dishes">
+        Platillo: {{ dish.dishId?.name }} - Cantidad: {{ dish.quantity }}
+      </li>
+    </ul>
+    <button (click)="editOrden(orden)">Editar</button>
+    <button *ngIf="orden._id" (click)="deleteOrden(orden._id)">Eliminar</button>
+  </li>
+</ul>

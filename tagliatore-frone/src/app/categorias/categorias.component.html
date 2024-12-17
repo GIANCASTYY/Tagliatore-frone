@@ -1,0 +1,28 @@
+<h2>Gestión de Categorías</h2>
+
+<!-- Formulario para crear o editar una categoría -->
+<form (ngSubmit)="editing ? updateCategoria() : createCategoria()">
+  <div>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" [(ngModel)]="categoria.name" name="name" required>
+  </div>
+  
+  <div>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" [(ngModel)]="categoria.description" name="description">
+  </div>
+  
+  <button type="submit">{{ editing ? 'Actualizar Categoría' : 'Crear Categoría' }}</button>
+</form>
+
+<button [routerLink]="'/meseros'" class="next-btn">Siguiente</button>
+
+<!-- Lista de Categorías -->
+<h3>Lista de Categorías</h3>
+<ul>
+  <li *ngFor="let categoria of categorias">
+    <span>{{ categoria.name }} - {{ categoria.description }}</span>
+    <button (click)="editCategoria(categoria)">Editar</button>
+    <button *ngIf="categoria._id" (click)="deleteCategoria(categoria._id)">Eliminar</button>
+  </li>
+</ul>

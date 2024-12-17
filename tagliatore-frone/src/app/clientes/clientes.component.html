@@ -1,0 +1,52 @@
+<div class="clientes-container">
+    <h2>{{ editing ? 'Editar Cliente' : 'Crear Cliente' }}</h2>
+    <form (ngSubmit)="createOrUpdateCliente()">
+      <div>
+        <label for="name">Nombre</label>
+        <input type="text" id="name" [(ngModel)]="cliente.name" name="name" required>
+      </div>
+      <div>
+        <label for="email">Correo</label>
+        <input type="email" id="email" [(ngModel)]="cliente.email" name="email" required>
+      </div>
+      <div>
+        <label for="phone">Teléfono</label>
+        <input type="text" id="phone" [(ngModel)]="cliente.phone" name="phone" required>
+      </div>
+      <div>
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" [(ngModel)]="cliente.dni" name="dni" required>
+      </div>
+      <button type="submit">{{ editing ? 'Actualizar' : 'Crear' }} Cliente</button>
+      <button type="button" (click)="resetForm()" *ngIf="editing">Cancelar</button>
+    </form>
+
+    <button [routerLink]="'/platillos'" class="next-btn">Siguiente</button>
+  
+    <h2>Lista de Clientes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>DNI</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.name }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.phone }}</td>
+          <td>{{ cliente.dni }}</td>
+          <td>
+            <button (click)="editCliente(cliente)">Editar</button>
+            <button (click)="deleteCliente(cliente._id!)">Eliminar</button>
+            
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,55 @@
+<h2>Platillos</h2>
+
+<!-- Formulario para crear un platillo -->
+<form (ngSubmit)="createPlatillo(platilloForm.value)" #platilloForm="ngForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" ngModel required>
+
+  <label for="ingredients">Ingredients:</label>
+  <input type="text" id="ingredients" name="ingredients" ngModel required>
+
+  <label for="price">Price:</label>
+  <input type="number" id="price" name="price" ngModel required>
+
+  <label for="image">Image:</label>
+  <input type="text" id="image" name="image" ngModel required>
+
+  <button type="submit">Create Dish</button>
+</form>
+
+<button [routerLink]="'/ordenes'" class="next-btn">Siguiente</button>
+<!-- Listado de platillos con botones de actualización y eliminación -->
+<ul>
+  <li *ngFor="let platillo of platillos">
+    {{ platillo.name }} - {{ platillo.price }}
+    
+    <!-- Botón de actualización -->
+    <button *ngIf="platillo.id" (click)="selectPlatillo(platillo)">Edit</button>
+    <button *ngIf="platillo.id" (click)="deleteDish(platillo.id!)">Delete</button>
+  </li>
+</ul>
+
+<!-- Formulario para editar el platillo seleccionado -->
+<div *ngIf="selectedPlatillo">
+  <h3>Edit Platillo</h3>
+  <form (ngSubmit)="updatePlatillo()" #updateForm="ngForm">
+    <label for="editName">Name:</label>
+    <input type="text" id="editName" name="name" [(ngModel)]="selectedPlatillo.name" required>
+
+    <label for="editIngredients">Ingredients:</label>
+    <input type="text" id="editIngredients" name="ingredients" [(ngModel)]="selectedPlatillo.ingredients" required>
+
+    <label for="editPrice">Price:</label>
+    <input type="number" id="editPrice" name="price" [(ngModel)]="selectedPlatillo.price" required>
+
+    <label for="editImage">Image:</label>
+    <input type="text" id="editImage" name="image" [(ngModel)]="selectedPlatillo.image" required>
+
+    <button type="submit">Update Dish</button>
+    <!-- Botón "Cerrar" al lado del botón "Actualizar" -->
+    <button type="button" (click)="closeEditForm()">Close</button>
+  </form>
+</div>
+
+<!-- Botón "Siguiente" a la página de Clientes -->
+

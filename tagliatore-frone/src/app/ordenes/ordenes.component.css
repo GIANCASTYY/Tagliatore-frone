@@ -1,0 +1,103 @@
+/* Estilos generales */
+h2, h3 {
+  color: #2c3e50;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 15px;
+}
+
+form {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #ecf0f1;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li span {
+  font-size: 16px;
+  color: #34495e;
+}
+
+li button {
+  background-color: #e74c3c;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+li button:hover {
+  background-color: #c0392b;
+}
+
+li button:first-child {
+  background-color: #f39c12;
+}
+
+li button:first-child:hover {
+  background-color: #e67e22;
+}
+
+  /* Estilo para el botón "Siguiente" */
+  .next-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.next-btn:hover {
+    background-color: #0056b3;
+}
